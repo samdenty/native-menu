@@ -79,6 +79,23 @@ import NativeMenu from 'native-menu'
 
 ### `items?: [{ action: Component, shortcut?: Component, onClick?: Function, disabled?: boolean }]`
 
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  items={[
+    action: 'test',
+    onClick: () => {
+      alert('clicked')
+    }
+  ]}
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
 An array containing custom menu items.
 
 - `action` - The name of the menu item. React components can be passed
@@ -86,19 +103,49 @@ An array containing custom menu items.
 - `onClick` - The callback for when the item is clicked
 - `disabled` - Grey out and disable the menu item
 
+
 ### `theme?: ('chrome' | 'chrome-dark' | 'material' | 'material-dark') `
+
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  theme="material-dark"
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
 
 Specifies the visual theme to use. Defaults to  `chrome`
 
 ### `styles?: JSS`
 
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  styles={{
+    root: {
+      backgroundColor: '#000',
+    },
+    action: {
+      backgroundColor: 'red'
+    }
+  }}
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
 Overrides the styles for the context menu using the [JSS](http://cssinjs.org) format. [JSS source code](https://github.com/samdenty99/native-menu/blob/7703f28bc6cb06ab8427a4808e0785374ea5e268/src/styles/chrome.jsx#L9)
 
 ### `hide?: NativeItems[]`
 
-Hides specific native menu items.
-
-<details><summary>Native item names</summary><p>
+Hides specific native menu items. <details><summary>Native item names</summary><p>
 
 ```
 'open-link'
@@ -126,10 +173,65 @@ Hides specific native menu items.
 
 </p></details>
 
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  hide={['save-as', 'print']}
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
 ### `mimic?: boolean`
+
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  mimic
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
 
 Adds all of the missing context menu items present in Chrome, but without any functionality when clicked.
 
 ### `minimal?: boolean`
 
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  minimal
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
 Hides non-essential menu items such as `print`, `save-as`, `view-source` etc.
+
+### `nativeClick?: Function`
+
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  nativeClick={(e, action) => {
+    e.preventDefault()
+    alert(`${action} triggered`)
+  }}
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
+Callback for when native menu items are clicked. To prevent the default item action, call `preventDefault()`
