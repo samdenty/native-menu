@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="" width="100">
-  <h3 align="center">native-menu</h3>
+  <img src="https://user-images.githubusercontent.com/13242392/37434914-2a7587de-27d9-11e8-9192-d329f50f379a.png" width="500">
+  <h2 align="center">native-menu</h2>
   <p align="center">
-    ReactJS context menu component, that doesn't break existing browser functionality
+    A lightweight React context menu component, that doesn't break existing browser functionality.
   </p>
 </p>
 <p align="center">
