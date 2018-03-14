@@ -1,0 +1,48 @@
+{
+  "name": "native-menu",
+  "version": "1.0.0",
+  "description": "ReactJS context menu component, that doesn't break native browser actions",
+  "keywords": [
+    "React",
+    "context menu",
+    "browser",
+    "chrome"
+  ],
+  "main": "build/index.js",
+  "dependencies": {
+    "copy-to-clipboard": "3.0.8",
+    "file-saver": "1.3.3",
+    "jss": "9.8.0",
+    "jss-preset-default": "4.3.0",
+    "react": "16.2.0",
+    "react-contextmenu": "2.9.2",
+    "react-dom": "16.2.0",
+    "webpack": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack-cli": "^2.0.12"
+  },
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "react",
+      "stage-2"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack --progress"
+  }
+}
