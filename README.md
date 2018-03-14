@@ -32,11 +32,6 @@
 - [Install](#install)
 - [Usage](#usage)
 - [Props](#props)
-- [Callback](#callback)
-- [Method](#method)
-- [Test](#test)
-- [Changelog](#changelog)
-- [License](#license)
 
 
 ## Install
