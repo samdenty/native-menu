@@ -21,8 +21,8 @@
   <a href="https://samdenty99.github.io/r?https://samdenty99.github.io/r?https://codesandbox.io/s/github/samdenty99/native-menu-demo/tree/master/">
     <img src="https://codesandbox.io/static/img/play-codesandbox.svg" height="20">
   </a>
-  <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/injectify/blob/master/package.json">
-    <img src="https://img.shields.io/github/package-json/v/samdenty99/injectify.svg?style=flat">
+  <a href="https://samdenty99.github.io/r?https://github.com/samdenty99/native-menu/blob/master/package.json">
+    <img src="https://img.shields.io/github/package-json/v/samdenty99/native-menu.svg?style=flat">
   </a>
 </p>
 <h2></h2>
