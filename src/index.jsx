@@ -24,7 +24,7 @@ const styles = {
   material: MaterialStyles
 }
 
-export class NativeMenu extends React.Component {
+export default class NativeMenu extends React.Component {
   state = {
     selection: null,
     link: null,
