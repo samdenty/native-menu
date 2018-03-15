@@ -126,7 +126,7 @@ Specifies the visual theme to use. Defaults to  `native`
 
 ```js
 <NativeMenu
-  platform="Mac"
+  platform="mac"
 >
   Click me
 </NativeMenu>
