@@ -24,7 +24,7 @@ const styles = {
   material: MaterialStyles
 }
 
-export default class EnhancedMenu extends React.Component {
+export default class NativeMenu extends React.Component {
   state = {
     selection: null,
     link: null,
@@ -95,7 +95,6 @@ export default class EnhancedMenu extends React.Component {
             )}
           </React.Fragment>
         ))}
-        <MenuItem divider />
       </React.Fragment>
     )
   }
@@ -125,7 +124,8 @@ export default class EnhancedMenu extends React.Component {
               {this.item('search-image')}
               {customItems && <MenuItem divider />}
               {customItems}
-              {!this.props.minimal && config.mimic && <MenuItem divider />}
+              {!this.props.minimal &&
+                (config.mimic || customItems) && <MenuItem divider />}
               {!this.props.minimal && this.item('view-source')}
             </React.Fragment>
           ) : link ? (
@@ -134,12 +134,17 @@ export default class EnhancedMenu extends React.Component {
               {this.item('new-window')}
               {config.mimic && this.item('new-incognito-window')}
               {!config.mimic && this.item('copy-link')}
-              {!this.props.minimal && <MenuItem divider />}
+              {customItems && <MenuItem divider />}
               {customItems}
-              {config.mimic && this.item('save-link')}
-              {config.mimic && this.item('copy-link')}
-              {!this.props.minimal && config.mimic && <MenuItem divider />}
-              {!this.props.minimal && this.item('view-source')}
+              {!this.props.minimal && (
+                <React.Fragment>
+                  {config.mimic || customItems ? <MenuItem divider /> : null}
+                  {config.mimic && this.item('save-link')}
+                  {config.mimic && this.item('copy-link')}
+                  {config.mimic && <MenuItem divider />}
+                  {this.item('view-source')}
+                </React.Fragment>
+              )}
             </React.Fragment>
           ) : selection ? (
             <React.Fragment>
@@ -149,12 +154,13 @@ export default class EnhancedMenu extends React.Component {
               {!this.props.minimal &&
                 (config.mimic || (customItems && <MenuItem divider />))}
               {customItems}
-              {!customItems && !this.props.minimal && <MenuItem divider />}
+              {customItems && !this.props.minimal && <MenuItem divider />}
               {!this.props.minimal && this.item('view-source')}
             </React.Fragment>
           ) : (
             <React.Fragment>
               {customItems}
+              {customItems && <MenuItem divider />}
               {this.item('back')}
               {this.item('forward')}
               {this.item('reload')}
