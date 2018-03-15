@@ -60,12 +60,12 @@ import NativeMenu from 'native-menu'
 
 <NativeMenu items={[
   {
-    action: 'Test 1',
-    shortcut: 'Ctrl+B',
+    primary: 'Test 1',
+    secondary: 'Ctrl+B',
     onClick: () => alert('Test 1')
   },
   {
-    action: 'Test 2',
+    primary: 'Test 2',
     disabled: true
   },
 ]}>
@@ -77,14 +77,14 @@ import NativeMenu from 'native-menu'
 
 ## Props
 
-### `items?: [{ action: Component, shortcut?: Component, onClick?: Function, disabled?: boolean }]`
+### `items?: [{ primary: Component, secondary?: Component, onClick?: Function, disabled?: boolean }]`
 
 <details><summary>Example</summary><p>
 
 ```js
 <NativeMenu
   items={[
-    action: 'test',
+    primary: 'test',
     onClick: () => {
       alert('clicked')
     }
@@ -98,13 +98,13 @@ import NativeMenu from 'native-menu'
 
 An array containing custom menu items.
 
-- `action` - The name of the menu item. React components can be passed
-- `shortcut` - The keyboard shortcut associated with the item. React components can be passed
+- `primary` - The name of the menu item. React components can be passed
+- `secondary` - The secondary text associated with the item (eg. Keyboard shortcut). React components can be passed
 - `onClick` - The callback for when the item is clicked
 - `disabled` - Grey out and disable the menu item
 
 
-### `theme?: ('chrome' | 'chrome-dark' | 'material' | 'material-dark') `
+### `theme?: ('native' | 'native-dark' | 'material' | 'material-dark') `
 
 <details><summary>Example</summary><p>
 
@@ -118,8 +118,23 @@ An array containing custom menu items.
 
 </p></details>
 
-Specifies the visual theme to use. Defaults to  `chrome`
+Specifies the visual theme to use. Defaults to  `native`
 
+### `platform?: ('windows' | 'edge' | 'chrome' | 'mac')`
+
+<details><summary>Example</summary><p>
+
+```js
+<NativeMenu
+  platform="Mac"
+>
+  Click me
+</NativeMenu>
+```
+
+</p></details>
+
+Only applicable with the `native` theme. Chooses the variant of context menu styles to us
 ### `styles?: JSS`
 
 <details><summary>Example</summary><p>
@@ -130,7 +145,7 @@ Specifies the visual theme to use. Defaults to  `chrome`
     root: {
       backgroundColor: '#000',
     },
-    action: {
+    primary: {
       backgroundColor: 'red'
     }
   }}

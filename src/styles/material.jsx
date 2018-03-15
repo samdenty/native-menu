@@ -59,14 +59,14 @@ export default config => {
         ...config.styles.divider
       }
     },
-    action: {
+    primary: {
       flexGrow: 1,
       padding: '0 10px',
-      ...config.styles.action
+      ...config.styles.primary
     },
-    shortcut: {
+    secondary: {
       color: '#a2a2a2',
-      ...config.styles.shortcut
+      ...config.styles.secondary
     }
   }
 

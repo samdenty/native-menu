@@ -1,6 +1,6 @@
 {
   "name": "native-menu",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "ReactJS context menu component, that doesn't break native browser actions",
   "keywords": [
     "React",

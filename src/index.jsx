@@ -7,24 +7,24 @@ import { render } from 'react-dom'
 import { ContextMenu, MenuItem, ContextMenuTrigger } from 'react-contextmenu'
 import * as Save from 'file-saver'
 import copy from 'copy-to-clipboard'
-import DefaultItems from './DefaultItems.jsx'
+import DefaultItems from './DefaultItems'
 
 /**
  * Styles
  */
-import ChromeStyles from './styles/chrome.jsx'
-import MaterialStyles from './styles/material.jsx'
+import NativeStyles from './styles/native'
+import MaterialStyles from './styles/material'
 
 const error = msg => {
   throw new Error(`[EnhancedMenu] ${msg}`)
 }
 
 const styles = {
-  chrome: ChromeStyles,
+  native: NativeStyles,
   material: MaterialStyles
 }
 
-export default class NativeMenu extends React.Component {
+export class NativeMenu extends React.Component {
   state = {
     selection: null,
     link: null,
@@ -34,7 +34,7 @@ export default class NativeMenu extends React.Component {
   id = Math.random().toString()
 
   componentWillMount() {
-    this.setTheme(this.props.theme || 'chrome', this.props)
+    this.setTheme(this.props.theme || 'native', this.props)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,19 +63,19 @@ export default class NativeMenu extends React.Component {
 
   item = item => {
     if (this.props.hide && this.props.hide.includes(item)) return null
-    const [name, shortcut, disabled] = DefaultItems(item, this.state.selection)
-    return this.menuItem(name, shortcut, disabled, e =>
+    const [name, secondary, disabled] = DefaultItems(item, this.state.selection)
+    return this.menuItem(name, secondary, disabled, e =>
       this.handleClick(e, item)
     )
   }
 
-  menuItem = (action, shortcut, disabled, onClick) => {
+  menuItem = (primary, secondary, disabled, onClick) => {
     if (typeof onClick !== 'function') onClick = new Function()
     const { classes } = this.state
     return (
       <MenuItem onClick={onClick.bind(this)} disabled={!!disabled}>
-        <div className={classes.action}>{action}</div>
-        {shortcut && <div className={classes.shortcut}>{shortcut}</div>}
+        <div className={classes.primary}>{primary}</div>
+        {secondary && <div className={classes.secondary}>{secondary}</div>}
       </MenuItem>
     )
   }
@@ -85,16 +85,24 @@ export default class NativeMenu extends React.Component {
     if (!items) return null
     return (
       <React.Fragment>
-        {items.map(item => (
-          <React.Fragment key={item.action}>
-            {this.menuItem(
-              item.action,
-              item.shortcut,
-              item.disabled,
-              item.onClick
-            )}
-          </React.Fragment>
-        ))}
+        {items.map(item => {
+          if (!item.primary)
+            error(
+              `The primary key is required on all list items!\n\t${JSON.stringify(
+                item
+              )}`
+            )
+          return (
+            <React.Fragment key={item.primary}>
+              {this.menuItem(
+                item.primary,
+                item.secondary,
+                item.disabled,
+                item.onClick
+              )}
+            </React.Fragment>
+          )
+        })}
       </React.Fragment>
     )
   }
