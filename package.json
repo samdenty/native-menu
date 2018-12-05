@@ -17,7 +17,8 @@
     "react": "16.2.0",
     "react-contextmenu": "2.9.2",
     "react-dom": "16.2.1",
-    "webpack": "^4.1.1"
+    "webpack": "^4.1.1",
+    "snyk": "^1.115.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -43,6 +44,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    "build": "webpack --progress"
-  }
+    "build": "webpack --progress",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
