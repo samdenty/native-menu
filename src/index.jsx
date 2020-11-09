@@ -29,15 +29,15 @@ export default class NativeMenu extends React.Component {
     selection: null,
     link: null,
     image: null,
-    classes: null
+    classes: {}
   }
   id = Math.random().toString()
 
-  componentWillMount() {
+  componentDidMount() {
     this.setTheme(this.props.theme || 'native', this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (nextProps.theme !== this.props.theme) {
       this.setTheme(nextProps.theme, nextProps)
     }
