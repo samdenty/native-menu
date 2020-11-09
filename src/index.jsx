@@ -29,7 +29,7 @@ export default class NativeMenu extends React.Component {
     selection: null,
     link: null,
     image: null,
-    classes: null
+    classes: {}
   }
   id = Math.random().toString()
 
