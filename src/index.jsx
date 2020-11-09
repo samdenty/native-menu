@@ -33,11 +33,11 @@ export default class NativeMenu extends React.Component {
   }
   id = Math.random().toString()
 
-  componentWillMount() {
+  componentDidMount() {
     this.setTheme(this.props.theme || 'native', this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (nextProps.theme !== this.props.theme) {
       this.setTheme(nextProps.theme, nextProps)
     }
